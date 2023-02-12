@@ -22,6 +22,16 @@ use Illuminate\Support\Facades\Route;
 
 //route login
 Route::get('/', [AntrianController::class, 'antrian'])->name('antrian');
-Route::get('/login', [UserController::class, 'index'])->name('login');
-Route::post('/authh', [UserController::class, 'authenticated'])->name('loginPost');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/authh', [UserController::class, 'authenticate'])->name('loginPost');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::group(['middleware' => ['auth']], function () {
+
+    Route::group(['middleware' => ['admin:1']], function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            // Route::group(['prefix' => '/'], function () {
+
+            // });
+    });
+});
