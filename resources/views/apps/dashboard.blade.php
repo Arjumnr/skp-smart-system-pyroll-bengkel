@@ -1,1 +1,0 @@
-@extends('apps._layouts.index')
