@@ -23,7 +23,8 @@ use App\Http\Controllers\UsersController;
 // });
 
 //route login
-// Route::get('/', [AntrianController::class, 'antrian'])->name('antrian');
+Route::get('/', [AntrianController::class, 'antrian'])->name('antrian');
+Route::post('/', [AntrianController::class, 'post'])->name('postAntrian');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/authh', [UserController::class, 'authenticate'])->name('loginPost');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');

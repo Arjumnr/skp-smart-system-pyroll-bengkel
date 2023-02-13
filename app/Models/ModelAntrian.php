@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
+
 
 class ModelAntrian extends Model
 {
@@ -15,4 +17,9 @@ class ModelAntrian extends Model
         'status',
 
     ];
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y ');
+    }
 }
