@@ -7,25 +7,25 @@
             }
         });
 
-        var table = $('#users-table').DataTable({
+        var table = $('#tableJenis').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('users.index') }}",
+            ajax: "{{ route('jenis.index') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'jenis',
+                    name: 'jenis'
                 },
                 {
-                    data: 'username',
-                    name: 'username'
+                    data: 'nama_servis',
+                    name: 'nama_servis'
                 },
                 {
-                    data: 'role',
-                    name: 'role'
+                    data: 'created_at',
+                    name: 'created_at'
                 },
                 {
                     data: 'action',
@@ -38,19 +38,19 @@
 
         });
 
-        if ($.fn.dataTable.isDataTable('#users-table')) {
-            table = $('#users-table').DataTable();
+        if ($.fn.dataTable.isDataTable('#tableJenis')) {
+            table = $('#tableJenis').DataTable();
         } else {
-            table = $('#users-table').DataTable({
-                "ajax": "{{ route('users.index') }}",
+            table = $('#tableJenis').DataTable({
+                "ajax": "{{ route('jenis.index') }}",
                 "columns": [{
-                        "data": "name"
+                        "data": "jenis"
                     },
                     {
-                        "data": "username"
+                        "data": "nama_servis"
                     },
                     {
-                        "data": "role"
+                        "data": "created_at"
                     },
                     {
                         "data": "action"
@@ -65,7 +65,7 @@
             $('#btnSave').html('Simpan');
             $('#data_id').val('');
             $('#formID').trigger("reset");
-            $('#modalHeading').html("Tambah Data User");
+            $('#modalHeading').html("Tambah Data ");
             // $('#modalAyamMasuk').modal('show');
         });
 
@@ -81,17 +81,14 @@
 
             var data_id = $(this).data('id');
 
-            $.get("{{ route('users.index') }}" + '/' + data_id + '/edit', function(data) {
+            $.get("{{ route('jenis.index') }}" + '/' + data_id + '/edit', function(data) {
                 console.log("data id = " + data.id);
                 $('#modalHeading').html("Edit User");
                 $('#btnSave').val("edit-data");
                 $('#basicModal').modal('show');
                 $('#data_id').val(data_id);
-                $('#name').val(data.name);
-                $('#username').val(data.username);
-                $('#password').val('');
-                $('#role').val(data.role);
-
+                $('#jenis').val(data.jenis);
+                $('#nama_servis').val(data.nama_servis);
             })
 
         });
@@ -102,7 +99,7 @@
             $(this).html('Sending..');
             $.ajax({
                 data: $('#formID').serialize(),
-                url: "{{ route('users.store') }}",
+                url: "{{ route('jenis.store') }}",
                 type: "POST",
                 dataType: 'json',
                 success: function(data) {
@@ -167,7 +164,7 @@
                     console.log(id);
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('users.store') }}" + '/' + id,
+                        url: "{{ route('jenis.store') }}" + '/' + id,
                         dataType: 'json',
 
                         success: function(data) {

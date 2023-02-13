@@ -11,27 +11,21 @@
                     <input type="hidden" name="data_id" id="data_id">
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username"
-                            placeholder="Username">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="role" class="form-label">Role</label>
-                        <select class="form-select" aria-label="Default select example" id="role" name="role">
-                            <option selected>--- Pilih Role ---</option>
-                            <option value="1">Admin</option>
-                            <option value="2">Mekanik</option>
+                        <label for="jenis" class="form-label">Jenis Servis</label>
+                        <select class="form-select" aria-label="Default select example" id="jenis" name="jenis">
+                            <option selected>--- Pilih Jenis Servis ---</option>
+                            <option value="ringan">Servis Ringan</option>
+                            <option value="berat">Servis Berat</option>
                         </select>
                     </div>
+
+                    
+                    <div class="mb-3">
+                        <label for="nama_servis" class="form-label">Nama Servis</label>
+                        <input type="text" class="form-control" id="nama_servis" name="nama_servis"
+                            placeholder="Ganti Oli">
+                    </div>
+                    
 
                 </form>
 

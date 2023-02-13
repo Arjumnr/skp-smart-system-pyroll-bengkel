@@ -6,17 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use App\Models\ModelUser;
+use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    
 
     public function login()
     {
@@ -26,8 +20,10 @@ class UserController extends Controller
             } else {
                 return view('admin.login');
             }
+        } else {
+            return view('admin.login');
         }
-        return view('admin.login');
+        // return view('admin.login');
     }
 
     public function authenticate(Request $request)
@@ -43,23 +39,23 @@ class UserController extends Controller
             ]
         );
 
-
         if ($cek == false) {
             return redirect()->back()->withErrors($cek)->withInput();
         } else {
-            $dataUser = ModelUser::where('username', $request->username)->first();
-
+            $dataUser = User::where('username', $request->username)->first();
             if ($dataUser) {
                 if (Hash::check($request->password, $dataUser->password)) {
 
                     $credensial = $request->only('username', 'password');
-
                     if (Auth::attempt($credensial)) {
                         $user = Auth::user();
                         $request->session()->regenerate();
                         if ($user->role == 1) {
                             return redirect()->intended('/dashboard');
-                        } 
+                        } else {
+                            Alert::error('Akun tidak ditemukan !');
+                            return back();
+                        }
                     }
                 } else {
                     Alert::error('Akun tidak ditemukan !');
@@ -81,6 +77,6 @@ class UserController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return view('admin.login');
     }
 }
