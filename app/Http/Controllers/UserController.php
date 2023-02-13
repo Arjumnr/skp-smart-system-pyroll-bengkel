@@ -11,6 +11,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
+
     public function login()
     {
         if ($user = Auth::user()) {
@@ -51,10 +58,8 @@ class UserController extends Controller
                         $user = Auth::user();
                         $request->session()->regenerate();
                         if ($user->role == 1) {
-                            return redirect()->intended('/');
-                        } else if ($user->role == 2) {
-                            return redirect()->intended('/');
-                        }
+                            return redirect()->intended('/dashboard');
+                        } 
                     }
                 } else {
                     Alert::error('Akun tidak ditemukan !');

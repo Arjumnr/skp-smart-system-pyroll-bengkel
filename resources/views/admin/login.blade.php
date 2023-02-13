@@ -32,7 +32,7 @@
 </head>
 
 <body>
-
+    @include('sweetalert::alert')
     <main>
         <div class="container">
 

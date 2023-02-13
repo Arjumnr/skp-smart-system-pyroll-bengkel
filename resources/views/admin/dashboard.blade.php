@@ -130,7 +130,7 @@
 
                     </div><!-- End Customers Card -->
 
-                 
+
 
                     {{-- <div class="col-12">
                         <div class="card top-selling overflow-auto">
@@ -511,4 +511,12 @@
 
         </div>
     </section>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+           
+        });
+    </script>
 @endsection

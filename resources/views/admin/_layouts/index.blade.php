@@ -23,7 +23,7 @@
 
     @include('admin._layouts.js')
     @yield('js')
-
+       
 </body>
 
 </html>

@@ -4,6 +4,7 @@ use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['admin:1']], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('users', UsersController::class);
             // Route::group(['prefix' => '/'], function () {
 
             // });
