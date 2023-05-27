@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ModelServis;
+use App\Models\ModelAntrian;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class ServisController extends Controller
+
+
+class AntrianAdminController extends Controller
 {
     public function index(Request $request)
     {
-        $data = ModelServis::all();
+        $data = ModelAntrian::orderBy('id', 'DESC')->get();
         try {
             if ($request->ajax()) {
                 return Datatables::of($data)
@@ -23,7 +25,7 @@ class ServisController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
             }
-            return view('admin.servis.index');
+            return view('admin.antrian.index');
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
@@ -31,11 +33,12 @@ class ServisController extends Controller
     public function store(Request $request)
     {
         try {
-            ModelServis::updateOrCreate(
+            ModelAntrian::updateOrCreate(
                 ['id' => $request->data_id],
                 [
-                    'jenis' => $request->jenis,
-                    'nama_servis' => $request->nama_servis,
+                    'nama' => $request->nama,
+                    'namor' => $request->nomor,
+                    'status' => $request->status,
                 ]
             );
             return response()->json(['status' => 'success', 'message' => 'Save data successfully.']);
@@ -46,15 +49,16 @@ class ServisController extends Controller
 
     public function edit($id)
     {
-        $dataUser = ModelServis::find($id);
+        $dataUser = ModelAntrian::find($id);
         return response()->json($dataUser);
     }
+
 
 
     public function destroy($id)
     {
         try {
-            ModelServis::find($id)->delete();
+            ModelAntrian::find($id)->delete();
             return response()->json(['status' => 'success', 'message' => 'Data deleted successfully.']);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);

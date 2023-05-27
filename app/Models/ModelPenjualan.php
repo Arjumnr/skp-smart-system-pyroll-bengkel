@@ -13,6 +13,7 @@ class ModelPenjualan extends Model
     protected $fillable = [
         'nama_pelanggan',
         'nama_barang',
+        'deskripsi',
         'user_id'
     ];
 

@@ -51,19 +51,20 @@ class UserController extends Controller
                         $user = Auth::user();
                         $request->session()->regenerate();
                         if ($user->role == 1) {
+                            Alert::success('Selamat Datang', $user->name);
                             return redirect()->intended('/dashboard');
                         } else {
                             Alert::error('Akun tidak ditemukan !');
-                            return back();
+                            return redirect()->back();
                         }
                     }
                 } else {
                     Alert::error('Akun tidak ditemukan !');
-                    return back();
+                    return redirect()->back();
                 }
             } else {
                 Alert::error('Akun tidak ditemukan !');
-                return back();
+                return redirect('/login');
             }
         }
     }

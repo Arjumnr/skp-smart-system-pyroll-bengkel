@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('nomor');
-            $table->enum('status', ['antri', 'selesai']);
+            $table->enum('status', ['antri', 'proses', 'selesai']);
             $table->timestamps();
         });
     }

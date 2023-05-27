@@ -16,7 +16,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="">
+            <a class="nav-link collapsed" href="{{ route('antrian.index') }}">
                 <i class="bi bi-bar-chart"></i>
                 <span>Antrian</span>
             </a>
@@ -28,15 +28,21 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="">
+            <a class="nav-link collapsed" href="{{ route('servis.index') }}">
                 <i class="bi bi-layout-text-window-reverse"></i>
                 <span>Daftar Sevis</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="">
+            <a class="nav-link collapsed" href="{{ route('penjualan.index') }}">
                 <i class="bi bi-card-list"></i>
                 <span>Daftar Penjualan</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('honor.index') }}">
+                <i class="bi bi-bar-chart"></i>
+                <span>Daftar Honor</span>
             </a>
         </li>
 

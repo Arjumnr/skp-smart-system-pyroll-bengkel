@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Daftar Servis</h1>
+        <h1>Daftar Penjualan</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item active">Daftar Servis</li>
+                <li class="breadcrumb-item active">Daftar Penjualan</li>
             </ol>
         </nav>
     </div>
@@ -25,11 +25,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Antrian</th>
-                                    <th>Nama Pelanggan</th>
-                                    <th>Mekanik</th>
-                                    <th>Jenis Service</th>
-                                    <th>Nama Service</th>
+                                    <th>Nama Barang</th>
+                                    <th>Nama Pelangan</th>
                                     <th>Tanggal Input</th>
                                     <th>Action</th>
                                 </tr>
@@ -40,11 +37,11 @@
             </div>
         </div>
     
-        @include('admin.servis.modal')
+        @include('admin.penjualan.modal')
 
     </section>
 @endsection
 
 @section('js')
-    @include('admin.servis.js')
+    @include('admin.penjualan.js')
 @endsection

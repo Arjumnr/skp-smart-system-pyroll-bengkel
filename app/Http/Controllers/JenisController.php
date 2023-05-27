@@ -51,21 +51,6 @@ class JenisController extends Controller
         return response()->json($dataUser);
     }
 
-    public function update(Request $request, $id)
-    {
-        $data = ModelJenis::find($id);
-        try {
-            $data->update([
-                'name' => $request->name,
-                'username' => $request->username,
-                'password' => $request->password,
-            ]);
-            return response()->json(['status' => 'success', 'message' => 'Update data successfully.']);
-        } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
-        }
-    }
-
 
     public function destroy($id)
     {

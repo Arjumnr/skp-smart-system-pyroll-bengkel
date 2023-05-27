@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\API\ApiAntrianController;
+use App\Http\Controllers\API\ApiHonorController;
+use App\Http\Controllers\API\ApiPekerjaanController;
+use App\Http\Controllers\API\ApiServisController;
+use App\Http\Controllers\API\ApiUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +22,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/login', [ApiUserController::class, 'login']);
+Route::post('/pembelian', [ApiServisController::class, 'pembelian']);
+Route::post('/add-pekerjaan', [ApiPekerjaanController::class, 'addPekerjaan']);
+
+Route::put('/put-to-selesai', [ApiPekerjaanController::class, 'putSelesai']);
+
+
+Route::get('/get-antrian', [ApiAntrianController::class, 'getAntrian']);
+Route::get('/get-jenis', [ApiServisController::class, 'getJenisServis']);
+Route::get('/get-servis', [ApiServisController::class, 'getServisAll']);
+Route::get('/get-honor/{id}', [ApiHonorController::class, 'getHonor']);
+

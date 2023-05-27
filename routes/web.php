@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\AntrianAdminController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HonorController;
 use App\Http\Controllers\JenisController;
+use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\ServisController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
@@ -35,6 +39,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('users', UsersController::class);
         Route::resource('jenis', JenisController::class);
+        Route::resource('antrian', AntrianAdminController::class);
+        Route::resource('servis', ServisController::class);
+        Route::resource('penjualan', PenjualanController::class);
+        Route::resource('honor', HonorController::class);
+
+
             
     });
 });

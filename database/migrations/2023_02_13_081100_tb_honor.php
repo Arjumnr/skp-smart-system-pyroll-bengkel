@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('tb_honor', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
-            $table->enum('kategori', ['servis', 'penjualan']);
             $table->string('servis_id');
             $table->string('penjualan_id');
             $table->timestamps();
