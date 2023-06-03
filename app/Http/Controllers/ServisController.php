@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ModelAntrian;
+use App\Models\ModelJenis;
 use App\Models\ModelServis;
+use App\Models\ModelUser;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -10,7 +13,11 @@ class ServisController extends Controller
 {
     public function index(Request $request)
     {
-        $data = ModelServis::all();
+        // $data = ModelServis::with('getJenis')->orderBy('id', 'desc')->get();
+        $data = ModelServis::with('getJenis', 'getUser')->orderBy('id', 'desc')->get();
+        $antrian = ModelAntrian::all();
+        $user = ModelUser::all();
+        $jenis = ModelJenis::all();
         try {
             if ($request->ajax()) {
                 return Datatables::of($data)
@@ -23,7 +30,7 @@ class ServisController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
             }
-            return view('admin.servis.index');
+            return view('admin.servis.index', compact('data','antrian', 'user', 'jenis'));
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }

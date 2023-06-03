@@ -23,4 +23,14 @@ class ModelServis extends Model
     {
         return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y ');
     }
+
+    public function getJenis()
+    {
+        return $this->belongsTo(ModelJenis::class, 'jenis_id', 'id');
+    }
+
+    public function getUser()
+    {
+        return $this->belongsTo(ModelUser::class, 'user_id', 'id');
+    }
 }

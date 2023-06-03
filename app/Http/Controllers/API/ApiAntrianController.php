@@ -18,6 +18,17 @@ class ApiAntrianController extends Controller
         ], 201);
     }
 
+    public function getAntrianKerja()
+    {
+        //antrian status antri tanggal ini
+        $model = ModelAntrian::where('status', 'antri')->whereDate('created_at', date('Y-m-d'))->get();
+        return response()->json([
+            'status' => true,
+            'message' => 'Data Antri Kerja',
+            'data'    => $model,
+        ], 201);
+    }
+
     // public function store(Request $request)
     // {
     //     $rules = [

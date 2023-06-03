@@ -37,4 +37,23 @@ class ApiPenjualanController extends Controller
             'data'    => $data,
         ], 201);
     }
+
+    //getDataPenjualan by id user hari ini
+    public function getDataPenjualan($id)
+    {
+        $data = ModelPenjualan::where('user_id', $id)->whereDate('created_at', date('Y-m-d'))->get();
+        if (!$data) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Data Tidak Ada',
+                'data'    => [],
+            ], 400);
+        } else {
+            return response()->json([
+                'status' => true,
+                'message' => 'Data Penjualan',
+                'data'    => $data,
+            ], 201);
+        }
+    }
 }

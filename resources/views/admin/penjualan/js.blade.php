@@ -16,12 +16,12 @@
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'jenis',
-                    name: 'jenis'
+                    data: 'nama_barang',
+                    name: 'nama_barang'
                 },
                 {
-                    data: 'nama_servis',
-                    name: 'nama_servis'
+                    data: 'nama_pelanggan',
+                    name: 'nama_pelanggan'
                 },
                 {
                     data: 'created_at',
@@ -44,10 +44,10 @@
             table = $('#tableJenis').DataTable({
                 "ajax": "{{ route('penjualan.index') }}",
                 "columns": [{
-                        "data": "jenis"
+                        "data": "nama_barang"
                     },
                     {
-                        "data": "nama_servis"
+                        "data": "nama_pelanggan"
                     },
                     {
                         "data": "created_at"

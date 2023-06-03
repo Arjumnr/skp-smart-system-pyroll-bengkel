@@ -16,12 +16,24 @@
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'jenis',
-                    name: 'jenis'
+                    data: 'nomor_antrian',
+                    name: 'nomor_antrian'
                 },
                 {
-                    data: 'nama_servis',
-                    name: 'nama_servis'
+                    data: 'nama_pelanggan',
+                    name: 'nama_pelanggan'
+                },
+                {
+                    data: 'get_user.name',
+                    name: 'get_user.name'
+                },
+                {
+                    data: 'get_jenis.jenis',
+                    name: 'get_jenis.jenis'
+                },
+                {
+                    data: 'get_jenis.nama_servis',
+                    name: 'get_jenis.nama_servis'
                 },
                 {
                     data: 'created_at',
@@ -38,26 +50,28 @@
 
         });
 
-        if ($.fn.dataTable.isDataTable('#tableJenis')) {
-            table = $('#tableJenis').DataTable();
-        } else {
-            table = $('#tableJenis').DataTable({
-                "ajax": "{{ route('servis.index') }}",
-                "columns": [{
-                        "data": "jenis"
-                    },
-                    {
-                        "data": "nama_servis"
-                    },
-                    {
-                        "data": "created_at"
-                    },
-                    {
-                        "data": "action"
-                    },
-                ]
-            });
-        }
+
+
+        // if ($.fn.dataTable.isDataTable('#tableJenis')) {
+        //     table = $('#tableJenis').DataTable();
+        // } else {
+        //     table = $('#tableJenis').DataTable({
+        //         "ajax": "{{ route('servis.index') }}",
+        //         "columns": [{
+        //                 "data": "jenis"
+        //             },
+        //             {
+        //                 "data": "nama_servis"
+        //             },
+        //             {
+        //                 "data": "created_at"
+        //             },
+        //             {
+        //                 "data": "action"
+        //             },
+        //         ]
+        //     });
+        // }
 
 
 
@@ -83,11 +97,14 @@
 
             $.get("{{ route('servis.index') }}" + '/' + data_id + '/edit', function(data) {
                 console.log("data id = " + data.id);
-                $('#modalHeading').html("Edit User");
+                $('#modalHeading').html("Edit Servis");
                 $('#btnSave').val("edit-data");
                 $('#basicModal').modal('show');
                 $('#data_id').val(data_id);
-                $('#jenis').val(data.jenis);
+                $('#nomor_antrian').val(data.nomor_antrian);
+                $('#nama_pelanggan').val(data.nama_pelanggan);
+                $('#user_id').val(data.user_id);
+                $('#jenis_id').val(data.jenis_id);
                 $('#nama_servis').val(data.nama_servis);
             })
 

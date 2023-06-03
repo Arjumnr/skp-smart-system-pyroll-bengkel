@@ -25,7 +25,20 @@ class ApiHonorController extends Controller
                 'data'    => $data,
             ], 201);
         }
-        
-        
+    }
+
+    public function postHonor(Request $request)
+    {
+        $model = $request->all();
+        $model['user_id'] = $request->user_id;
+        $model['penjualan_id'] = $request->penjualan_id;
+        $model['servis_id'] = $request->servis_id;
+
+        $data = ModelHonor::create($model);
+        return response()->json([
+            'status' => true,
+            'message' => 'Berhasil Tambah Honor',
+            'data'    => $data,
+        ], 201);
     }
 }
