@@ -60,7 +60,7 @@
                             <div class="col-xxl-6 col-md-6">
                                 <div class="card info-card sales-card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Antrian <span>| Sekearang</span> </h5>
+                                        <h5 class="card-title">Antrian <span>| Sekarang</span> </h5>
                                         <div class="d-flex align-items-center justify-content-center">
                                             <div class="ps-3">
                                                 <h1> <?= $sekarang ?> </h1>

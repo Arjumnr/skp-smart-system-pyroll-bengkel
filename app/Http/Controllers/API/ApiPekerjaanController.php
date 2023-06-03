@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 
 class ApiPekerjaanController extends Controller
 {
-    
+
     //add pekerjaan
     public function addPekerjaan(Request $request)
     {
-        try{
+        try {
             $model = $request->all();
             $noAntrian = $request->nomor_antrian;
             $data = ModelServis::create($model);
@@ -43,7 +43,32 @@ class ApiPekerjaanController extends Controller
         }
     }
 
-    public function putSelesai($id){
+    public function getPekerjaan($id)
+    {
+        $data = ModelServis::with('getJenis')->where('user_id', $id)->get();
+        //add key antrian where antrian data servis yang sesuai 
+        foreach ($data as $key => $value) {
+            $dataAntrian = ModelAntrian::where('nomor', $value->nomor_antrian)->first();
+            $data[$key]['antrian'] = $dataAntrian;
+        }
+
+        if (!$data) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Data Tidak Ada',
+                'data'    => [],
+            ], 400);
+        } else {
+            return response()->json([
+                'status' => true,
+                'message' => 'Data Pekerjaan',
+                'data'    => $data,
+            ], 201);
+        }
+    }
+
+    public function putSelesai($id)
+    {
         $data = ModelServis::where('id', $id)->first();
         $data->status = 'selasai';
         $data->save();

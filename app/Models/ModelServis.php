@@ -33,4 +33,10 @@ class ModelServis extends Model
     {
         return $this->belongsTo(ModelUser::class, 'user_id', 'id');
     }
+
+    public function getAntrian()
+    {
+        
+        return $this->belongsTo(ModelAntrian::class, 'nomor_antrian', 'nomor');
+    }
 }

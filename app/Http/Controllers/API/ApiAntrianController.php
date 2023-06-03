@@ -21,7 +21,7 @@ class ApiAntrianController extends Controller
     public function getAntrianKerja()
     {
         //antrian status antri tanggal ini
-        $model = ModelAntrian::where('status', 'antri')->whereDate('created_at', date('Y-m-d'))->get();
+        $model = ModelAntrian::where('status', 'antri')->whereDate('created_at', date('Y-m-d'))->orderBy('created_at', 'asc')->get();
         return response()->json([
             'status' => true,
             'message' => 'Data Antri Kerja',
