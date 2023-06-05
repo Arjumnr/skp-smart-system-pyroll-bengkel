@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ModelHonor;
+use App\Models\ModelJenis;
 use App\Models\ModelPenjualan;
 use App\Models\ModelServis;
 
@@ -12,13 +13,56 @@ class ApiHonorController extends Controller
 {
     public function getHonor($id)
     {
-        $dataPenjualan = ModelPenjualan::where('user_id', $id)->get();
-        $dataServis = ModelServis::where('user_id', $id)->get();
+
+        $dataHonor = ModelHonor::where('user_id', $id)->whereDate('created_at', date('Y-m-d'))->get();
+        //add data penjualan, servis,
+        foreach ($dataHonor as $key => $value) {
+            $dataPenjualan = ModelPenjualan::where('id', $value->penjualan_id)->first();
+            $dataServis = ModelServis::where('id', $value->servis_id)->first();
+            $dataJenis = ModelJenis::all();
+            $dataHonor[$key]['penjualan'] = $dataPenjualan;
+            $dataHonor[$key]['servis'] = $dataServis;
+            $dataHonor[$key]['jenis'] = $dataJenis;
+
+            //kirim berapa total servis yang dilakukan oleh user 
+            $dataServis = ModelServis::where('user_id', $id)->whereDate('created_at', date('Y-m-d'))->get();
+            $dataHonor[$key]['total_servis'] = count($dataServis);
+
+            //kirim berapa total penjualan yang dilakukan oleh user
+            $dataPenjualan = ModelPenjualan::where('user_id', $id)->whereDate('created_at', date('Y-m-d'))->get();
+            $dataHonor[$key]['total_penjualan'] = count($dataPenjualan);
+
+
+
+        }
+
+            //kirim berapa total honor yang didapat oleh user jika penjualan kali 10000 dan ketika servis ringan * 10000 dan servis berat kali 30000
+
+           foreach ($dataHonor as $key => $value) {
+            $dataPenjualan = ModelPenjualan::where('id', $value->penjualan_id)->first();
+            $dataServis = ModelServis::where('id', $value->servis_id)->first();
+            $dataJenis = ModelJenis::all();
+            $dataHonor[$key]['penjualan'] = $dataPenjualan;
+            $dataHonor[$key]['servis'] = $dataServis;
+            $dataHonor[$key]['jenis'] = $dataJenis;
+
+            //kirim berapa total servis yang dilakukan oleh user 
+            $dataServis = ModelServis::where('user_id', $id)->whereDate('created_at', date('Y-m-d'))->get();
+            $dataHonor[$key]['total_servis'] = count($dataServis);
+
+            //kirim berapa total penjualan yang dilakukan oleh user
+            $dataPenjualan = ModelPenjualan::where('user_id', $id)->whereDate('created_at', date('Y-m-d'))->get();
+            $dataHonor[$key]['total_penjualan'] = count($dataPenjualan);
+
+            //kirim berapa total honor yang didapat oleh user jika penjualan kali 10000 dan ketika servis ringan * 10000 dan servis berat kali 30000
+            $dataHonor[$key]['total_honor'] = ($dataHonor[$key]['total_penjualan'] * 10000) + ($dataHonor[$key]['total_servis'] * 10000) + ($dataHonor[$key]['total_servis'] * 30000);
+        }
+
+
         return response()->json([
             'status' => true,
             'message' => 'Data Honor',
-            'data'    => $dataPenjualan,
-            'data2'    => $dataServis,
+            'data'    => $dataHonor,
         ], 201);
         // $data = ModelHonor::where('user_id', $id)->first();
         // if (!$data) {

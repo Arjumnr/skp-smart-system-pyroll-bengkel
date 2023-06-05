@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\ModelAntrian;
+use App\Models\ModelHonor;
 use App\Models\ModelJenis;
 use App\Models\ModelServis;
 use Illuminate\Http\Request;
@@ -69,9 +70,20 @@ class ApiPekerjaanController extends Controller
 
     public function putSelesai($id)
     {
-        $data = ModelServis::where('id', $id)->first();
-        $data->status = 'selasai';
+
+        $dataAntrian = ModelAntrian::where('id', $id)->first();
+        $dataAntrian->status = 'selesai';
+        $dataAntrian->save();
+        $data = ModelServis::where('nomor_antrian', $dataAntrian->nomor)->where('nama_pelanggan', $dataAntrian->nama)->first();
+        $data->w_selesai = date('H:i:s');
         $data->save();
+
+        $dataHonor = new ModelHonor();
+        $dataHonor->user_id = $data->user_id;
+        $dataHonor->servis_id = $data->id;
+        $dataHonor->save();
+
+
         return response()->json([
             'status' => true,
             'message' => 'Berhasil Selesai Pekerjaan',

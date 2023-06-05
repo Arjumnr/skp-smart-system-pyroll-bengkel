@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\ModelHonor;
 use App\Models\ModelJenis;
 use App\Models\ModelPenjualan;
 use Illuminate\Http\Request;
@@ -31,14 +32,5 @@ class ApiServisController extends Controller
         ], 201);
     }
 
-    public function pembelian(Request $request)
-    {
-        $model = $request->all();
-        $data = ModelPenjualan::create($model);
-        return response()->json([
-            'status' => true,
-            'message' => 'Berhasil Tambah Pemnjualan',
-            'data'    => $data,
-        ], 201);
-    }
+    
 }
