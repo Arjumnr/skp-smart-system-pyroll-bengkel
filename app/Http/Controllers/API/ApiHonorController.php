@@ -31,6 +31,7 @@ class ApiHonorController extends Controller
             //kirim berapa total penjualan yang dilakukan oleh user
             $dataPenjualan = ModelPenjualan::where('user_id', $id)->whereDate('created_at', date('Y-m-d'))->get();
             $dataHonor[$key]['total_penjualan'] = count($dataPenjualan);
+            
 
 
 

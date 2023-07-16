@@ -21,4 +21,19 @@ class ModelHonor extends Model
     {
         return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y ');
     }
+
+    //getPenjualan
+    public function getPenjualan(){
+        return $this->belongsTo(ModelPenjualan::class, 'penjualan_id', 'id');
+    }
+
+    //getServis
+    public function getServis(){
+        return $this->belongsTo(ModelServis::class, 'servis_id', 'id');
+    }
+
+    //getUser
+    public function getUser(){
+        return $this->belongsTo(ModelUser::class, 'user_id', 'id');
+    }
 }

@@ -22,6 +22,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('barang.index') }}">
+                <i class="bi bi-layout-text-window-reverse"></i>
+                <span>Daftar Barang</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('jenis.index') }}">
                 <i class="bi bi-journal-text"></i>
                 <span>Jenis Servis</span>

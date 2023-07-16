@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AntrianAdminController;
 use App\Http\Controllers\AntrianController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HonorController;
 use App\Http\Controllers\JenisController;
@@ -40,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('users', UsersController::class);
         Route::resource('jenis', JenisController::class);
         Route::resource('antrian', AntrianAdminController::class);
+        Route::resource('barang', BarangController::class);
         Route::resource('servis', ServisController::class);
         Route::resource('penjualan', PenjualanController::class);
         Route::resource('honor', HonorController::class);
