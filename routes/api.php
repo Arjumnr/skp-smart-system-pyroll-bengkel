@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ApiAntrianController;
+use App\Http\Controllers\API\ApiBarangController;
 use App\Http\Controllers\API\ApiHonorController;
 use App\Http\Controllers\API\ApiPekerjaanController;
 use App\Http\Controllers\API\ApiPenjualanController;
@@ -33,6 +34,7 @@ Route::get('/put-to-selesai/{id}', [ApiPekerjaanController::class, 'putSelesai']
 
 
 Route::get('/get-antrian', [ApiAntrianController::class, 'getAntrian']);
+Route::get('/get-barang', [ApiBarangController::class, 'getBarang']);
 Route::get('/get-antrian-kerja', [ApiAntrianController::class, 'getAntrianKerja']);
 Route::get('/get-jenis', [ApiServisController::class, 'getJenisServis']);
 Route::get('/get-servis', [ApiServisController::class, 'getServisAll']);
