@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ModelAntrian;
+use App\Models\ModelServis;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -23,6 +24,23 @@ class AntrianController extends Controller
 
         $antrian =
             ModelAntrian::whereDate('created_at', date('Y-m-d'))->orderBy('nomor', 'desc')->get();
+            // return response()->json($antrian);
+
+            //add key mekanik dan harga 
+            foreach ($antrian as $key => $value) {
+                $dataServis = ModelServis::where('nomor_antrian', $value->nomor)->whereDate('created_at', date('Y-m-d'))->get();
+
+                if ($dataServis->count() > 0) {
+                    $antrian[$key]['mekanik'] = $dataServis->first()->getUser->name;
+                    $antrian[$key]['harga'] = $dataServis->first()->getJenis->harga;
+                    $antrian[$key]['jenis_servis'] = $dataServis->first()->getJenis->nama_servis;
+                } else {
+                    $antrian[$key]['mekanik'] = '-';
+                    $antrian[$key]['harga'] = '-';
+                    $antrian[$key]['jenis_servis'] = '-';
+                }
+            }
+            // return response()->json($antrian);
 
         return view('index', compact('sekarang', 'dilayani', 'antrian'));
     }

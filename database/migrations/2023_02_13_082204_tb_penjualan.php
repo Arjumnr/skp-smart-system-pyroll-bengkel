@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tb_penjualan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pelanggan');
-            $table->string('nama_barang');
+            $table->string('barang_id');
             $table->string('deskripsi');
             $table->string('user_id');
             $table->timestamps();

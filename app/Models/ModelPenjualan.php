@@ -12,7 +12,7 @@ class ModelPenjualan extends Model
     protected $table = 'tb_penjualan';
     protected $fillable = [
         'nama_pelanggan',
-        'nama_barang',
+        'barang_id',
         'deskripsi',
         'user_id'
     ];

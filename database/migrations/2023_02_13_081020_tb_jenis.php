@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->enum('jenis', ['ringan', 'berat']);
             $table->string('nama_servis');
+            $table->string('harga');
             $table->timestamps();
         });
 

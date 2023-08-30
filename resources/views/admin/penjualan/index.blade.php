@@ -26,7 +26,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Barang</th>
-                                    <th>Nama Pelangan</th>
+                                    <th>Nama Pelanggan</th>
                                     <th>Tanggal Input</th>
                                     <th>Action</th>
                                 </tr>

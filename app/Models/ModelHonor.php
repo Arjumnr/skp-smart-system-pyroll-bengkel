@@ -36,4 +36,6 @@ class ModelHonor extends Model
     public function getUser(){
         return $this->belongsTo(ModelUser::class, 'user_id', 'id');
     }
+
+    
 }

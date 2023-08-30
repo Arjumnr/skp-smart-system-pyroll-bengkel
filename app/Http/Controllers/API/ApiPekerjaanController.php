@@ -19,7 +19,8 @@ class ApiPekerjaanController extends Controller
             $model = $request->all();
             $noAntrian = $request->nomor_antrian;
             $data = ModelServis::create($model);
-            $dataAntrian = ModelAntrian::where('nomor', $noAntrian)->first();
+            //update status antrian menjadi proses where no antrian dan tanggal hari ini
+            $dataAntrian = ModelAntrian::where('nomor', $noAntrian)->whereDate('created_at', date('Y-m-d'))->first();
             $dataAntrian->status = 'proses';
             $dataAntrian->save();
             if ($data) {
@@ -46,10 +47,10 @@ class ApiPekerjaanController extends Controller
 
     public function getPekerjaan($id)
     {
-        $data = ModelServis::with('getJenis')->where('user_id', $id)->get();
+        $data = ModelServis::with('getJenis')->where('user_id', $id)->whereDate('created_at', date('Y-m-d'))->orderBy('id', 'desc')->get();
         //add key antrian where antrian data servis yang sesuai 
         foreach ($data as $key => $value) {
-            $dataAntrian = ModelAntrian::where('nomor', $value->nomor_antrian)->first();
+            $dataAntrian = ModelAntrian::where('nomor', $value->nomor_antrian)->whereDate('created_at', date('Y-m-d'))->first();
             $data[$key]['antrian'] = $dataAntrian;
         }
 

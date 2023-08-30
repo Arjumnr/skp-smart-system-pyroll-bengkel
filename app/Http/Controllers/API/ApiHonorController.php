@@ -8,6 +8,8 @@ use App\Models\ModelHonor;
 use App\Models\ModelJenis;
 use App\Models\ModelPenjualan;
 use App\Models\ModelServis;
+use App\Models\ModelBarang;
+use Yajra\DataTables\Html\Editor\Fields\Select;
 
 class ApiHonorController extends Controller
 {
@@ -17,12 +19,23 @@ class ApiHonorController extends Controller
         $dataHonor = ModelHonor::where('user_id', $id)->whereDate('created_at', date('Y-m-d'))->get();
         //add data penjualan, servis,
         foreach ($dataHonor as $key => $value) {
-            $dataPenjualan = ModelPenjualan::where('id', $value->penjualan_id)->first();
-            $dataServis = ModelServis::where('id', $value->servis_id)->first();
+            $dataPenjualan = ModelPenjualan::where('id', $value->penjualan_id)->get();
+            $dataServis = ModelServis::where('id', $value->servis_id)->get();
             $dataJenis = ModelJenis::all();
+            //data barang dari barang id di model penjualan
+            $dataBarang = $dataPenjualan->map(function ($item) {
+                return ModelBarang::where('id', $item->barang_id)->get();
+            });
+            //remove duplicate [][]
+            $dataBarang = $dataBarang->flatten();
+            
+            
+        
+
             $dataHonor[$key]['penjualan'] = $dataPenjualan;
             $dataHonor[$key]['servis'] = $dataServis;
             $dataHonor[$key]['jenis'] = $dataJenis;
+            $dataHonor[$key]['barang'] = $dataBarang;
 
             //kirim berapa total servis yang dilakukan oleh user 
             $dataServis = ModelServis::where('user_id', $id)->whereDate('created_at', date('Y-m-d'))->get();
