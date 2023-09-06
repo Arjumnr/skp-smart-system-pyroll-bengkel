@@ -22,4 +22,6 @@ class ModelJenis extends Model
     {
         return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y ');
     }
+
+     
 }

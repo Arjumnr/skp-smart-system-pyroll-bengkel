@@ -142,8 +142,8 @@
                                                         <th>Nomor</th>
                                                         <th>Status</th>
                                                         <th>Mekanik</th>
-                                                        <th>Jenis Servis</th>
-                                                        <th>Pembayaran</th>
+                                                        {{-- <th>Jenis Servis</th>
+                                                        <th>Pembayaran</th> --}}
 
                                                     </tr>
                                                 </thead>
@@ -155,13 +155,13 @@
                                                             <td>{{ $item->nomor }}</td>
                                                             <td>{{ $item->status }}</td>
                                                             <td>{{ $item->mekanik }}</td>
-                                                            <td>{{ $item->jenis_servis }}</td>
+                                                            {{-- <td>{{ $item->jenis_servis }}</td>
                                                             @if ($item->harga != '-')
                                                                 <td>Rp. {{ number_format($item->harga, 0, ',', '.') }}
                                                                 </td>
                                                             @else
                                                                 <td>-</td>
-                                                            @endif
+                                                            @endif --}}
 
                                                         </tr>
                                                     @empty

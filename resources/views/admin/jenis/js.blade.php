@@ -24,6 +24,10 @@
                     name: 'nama_servis'
                 },
                 {
+                    data: 'harga',
+                    name: 'harga'
+                },
+                {
                     data: 'created_at',
                     name: 'created_at'
                 },
@@ -48,6 +52,9 @@
                     },
                     {
                         "data": "nama_servis"
+                    },
+                    {
+                        "data": "harga"
                     },
                     {
                         "data": "created_at"
@@ -89,6 +96,7 @@
                 $('#data_id').val(data_id);
                 $('#jenis').val(data.jenis);
                 $('#nama_servis').val(data.nama_servis);
+                $('#harga').val(data.harga);
             })
 
         });

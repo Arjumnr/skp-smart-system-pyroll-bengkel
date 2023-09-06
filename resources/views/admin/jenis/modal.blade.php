@@ -19,13 +19,18 @@
                         </select>
                     </div>
 
-                    
+
                     <div class="mb-3">
                         <label for="nama_servis" class="form-label">Nama Servis</label>
                         <input type="text" class="form-control" id="nama_servis" name="nama_servis"
                             placeholder="Ganti Oli">
                     </div>
-                    
+
+                    <div class="mb-3">
+                        <label for="harga" class="form-label">Harga</label>
+                        <input type="number" class="form-control" id="harga" name="harga">
+                    </div>
+
 
                 </form>
 

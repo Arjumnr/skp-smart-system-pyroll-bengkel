@@ -37,6 +37,7 @@ class JenisController extends Controller
                 [
                     'jenis' => $request->jenis,
                     'nama_servis' => $request->nama_servis,
+                    'harga' => $request->harga
                 ]
             );
             return response()->json(['status' => 'success', 'message' => 'Save data successfully.']);

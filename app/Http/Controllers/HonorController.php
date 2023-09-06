@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ModelBarang;
 use App\Models\ModelHonor;
 use App\Models\ModelPenjualan;
 use App\Models\ModelServis;
@@ -26,9 +27,15 @@ class HonorController extends Controller
         // }
 
         
-        $data  = ModelHonor::with('getUser')->with('getPenjualan')->with('getServis')->get();
+        $data  = ModelHonor::with('getUser', 'getServis.getJenis', 'getPenjualan.getBarang')->get();
+        // $data = ModelHonor::with([
+        //     'getUser',
+        //     'getServis',
+        //     'getPenjualan.getBarang'
+           
+        // ])->get();
+        // return response()->json($data);
         
-
         try {
             if ($request->ajax()) {
                 return Datatables::of($data)
@@ -41,6 +48,7 @@ class HonorController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
             }
+
             return view('admin.honor.index');
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);

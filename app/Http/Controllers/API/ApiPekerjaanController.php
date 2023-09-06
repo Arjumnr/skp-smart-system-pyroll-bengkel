@@ -69,6 +69,30 @@ class ApiPekerjaanController extends Controller
         }
     }
 
+    public function getPekerjaanBulanan($id, $bulan)
+    {
+        $data = ModelServis::with('getJenis')->where('user_id', $id)->whereMonth('created_at', $bulan)->orderBy('id', 'desc')->get();
+        //add key antrian where antrian data servis yang sesuai 
+        foreach ($data as $key => $value) {
+            $dataAntrian = ModelAntrian::where('nomor', $value->nomor_antrian)->whereMonth('created_at', $bulan)->first();
+            $data[$key]['antrian'] = $dataAntrian;
+        }
+
+        if (!$data) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Data Tidak Ada',
+                'data'    => [],
+            ], 400);
+        } else {
+            return response()->json([
+                'status' => true,
+                'message' => 'Data Pekerjaan',
+                'data'    => $data,
+            ], 201);
+        }
+    }
+
     public function putSelesai($id)
     {
 

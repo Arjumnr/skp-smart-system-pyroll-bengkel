@@ -29,10 +29,13 @@ class AntrianController extends Controller
             //add key mekanik dan harga 
             foreach ($antrian as $key => $value) {
                 $dataServis = ModelServis::where('nomor_antrian', $value->nomor)->whereDate('created_at', date('Y-m-d'))->get();
-
                 if ($dataServis->count() > 0) {
+                // return response()->json($dataServis);
+
                     $antrian[$key]['mekanik'] = $dataServis->first()->getUser->name;
-                    $antrian[$key]['harga'] = $dataServis->first()->getJenis->harga;
+                // return response()->json($dataServis->first()->getJenis->harga);
+
+                    // $antrian[$key]['harga'] = $dataServis->first()->getJenis->harga;
                     $antrian[$key]['jenis_servis'] = $dataServis->first()->getJenis->nama_servis;
                 } else {
                     $antrian[$key]['mekanik'] = '-';

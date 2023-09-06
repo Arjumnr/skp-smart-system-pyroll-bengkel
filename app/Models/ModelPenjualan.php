@@ -21,4 +21,9 @@ class ModelPenjualan extends Model
     {
         return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y ');
     }
+
+    //getBarang
+    public function getBarang(){
+        return $this->belongsTo(ModelBarang::class, 'barang_id', 'id');
+    }
 }

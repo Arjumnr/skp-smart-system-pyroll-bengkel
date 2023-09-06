@@ -18,7 +18,8 @@
                 <div class="card">
                     <br>
                     <div style="width:90%;" align="right">
-                        <button id="btnADD" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#basicModal">Tambah Data</button>
+                        <button id="btnADD" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#basicModal">Tambah Data</button>
                     </div>
                     <div class="card-body">
                         <table class="ui celled table" id="tableJenis" style="width:100%">
@@ -27,6 +28,7 @@
                                     <th>No</th>
                                     <th>Jenis</th>
                                     <th>Nama Servis</th>
+                                    <th>Harga</th>
                                     <th>Tanggal Input</th>
                                     <th>Action</th>
                                 </tr>
@@ -36,7 +38,7 @@
                 </div>
             </div>
         </div>
-    
+
         @include('admin.jenis.modal')
 
     </section>

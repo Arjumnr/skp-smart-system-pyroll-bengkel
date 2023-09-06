@@ -38,5 +38,6 @@ Route::get('/get-barang', [ApiBarangController::class, 'getBarang']);
 Route::get('/get-antrian-kerja', [ApiAntrianController::class, 'getAntrianKerja']);
 Route::get('/get-jenis', [ApiServisController::class, 'getJenisServis']);
 Route::get('/get-servis', [ApiServisController::class, 'getServisAll']);
-Route::get('/get-honor/{id}', [ApiHonorController::class, 'getHonor']);
+// Route::get('/get-honor/{id}', [ApiHonorController::class, 'getHonor']);
+Route::get('/get-honor/{id}/{bulan?}', [ApiHonorController::class, 'getHonorBulanan']);
 Route::get('/get-pekerjaan/{id}', [ApiPekerjaanController::class, 'getPekerjaan']);
