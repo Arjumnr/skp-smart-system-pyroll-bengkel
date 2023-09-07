@@ -27,7 +27,7 @@ class HonorController extends Controller
         // }
 
         
-        $data  = ModelHonor::with('getUser', 'getServis.getJenis', 'getPenjualan.getBarang')->get();
+        $data  = ModelHonor::with('getUser', 'getServis.getJenis', 'getPenjualan.getBarang')->orderBy('id', 'desc')->get();
         // $data = ModelHonor::with([
         //     'getUser',
         //     'getServis',

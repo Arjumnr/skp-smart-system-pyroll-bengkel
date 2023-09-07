@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('servis_id')->nullable();
             $table->string('penjualan_id')->nullable();
+            $table->string('honor')->nullable();
             $table->timestamps();
         });
     }

@@ -14,6 +14,7 @@ class ModelHonor extends Model
         'user_id',
         'servis_id',
         'penjualan_id',
+        'honor'
 
     ];
 

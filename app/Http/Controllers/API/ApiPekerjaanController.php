@@ -99,13 +99,20 @@ class ApiPekerjaanController extends Controller
         $dataAntrian = ModelAntrian::where('id', $id)->first();
         $dataAntrian->status = 'selesai';
         $dataAntrian->save();
-        $data = ModelServis::where('nomor_antrian', $dataAntrian->nomor)->where('nama_pelanggan', $dataAntrian->nama)->first();
+        $data = ModelServis::where('nomor_antrian', $dataAntrian->nomor)->where('nama_pelanggan', $dataAntrian->nama)->with('getJenis')->first();
         $data->w_selesai = date('H:i:s');
         $data->save();
 
         $dataHonor = new ModelHonor();
         $dataHonor->user_id = $data->user_id;
         $dataHonor->servis_id = $data->id;
+        //jika servis ringan honor = 10000 dan servis berat honor = 20000
+        if ($data->getJenis->jenis == 'ringan') {
+            $dataHonor->honor = 10000;
+        } else {
+            $dataHonor->honor = 20000;
+        }
+        // $dataHonor->honor = $honor;
         $dataHonor->save();
 
 

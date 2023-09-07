@@ -28,6 +28,7 @@
                                     <th>Mekanik</th>
                                     <th>Jenis</th>
                                     <th>Servis</th>
+                                    <th>Honor</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

@@ -18,7 +18,7 @@ class ApiPenjualanController extends Controller
         $dataHonor = new ModelHonor();
         $dataHonor->user_id = $request->user_id;
         $dataHonor->penjualan_id = $data->id;
-
+        $dataHonor->honor = 10000;
         $dataHonor->save();
         // if ($data) {
         //     $dataPenjualan = ModelPenjualan::latest()->first();

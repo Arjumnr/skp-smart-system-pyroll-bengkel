@@ -100,51 +100,51 @@ class ApiHonorController extends Controller
         if ($bulan != null){
             switch($bulan){
                 case 'Januari':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 1)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 1)->orderBy('id', 'desc')->get();                 
                     $bulan = 1;
                     break;
                 case 'Februari':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 2)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 2)->orderBy('id', 'desc')->get(); 
                     $bulan = 2;
                     break;
                 case 'Maret':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 3)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 3)->orderBy('id', 'desc')->get(); 
                     $bulan = 3;
                     break;
                 case 'April':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 4)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 4)->orderBy('id', 'desc')->get(); 
                     $bulan = 4;
                     break;
                 case 'Mei':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 5)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 5)->orderBy('id', 'desc')->get(); 
                     $bulan = 5;
                     break;
                 case 'Juni':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 6)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 6)->orderBy('id', 'desc')->get(); 
                     $bulan = 6;
                     break;
                 case 'Juli':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 7)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 7)->orderBy('id', 'desc')->get(); 
                     $bulan = 7;
                     break;
                 case 'Agustus':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 8)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 8)->orderBy('id', 'desc')->get(); 
                     $bulan = 8;
                     break;
                 case 'September':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 9)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 9)->orderBy('id', 'desc')->get(); 
                     $bulan = 9;
                     break;
                 case 'Oktober':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 10)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 10)->orderBy('id', 'desc')->get(); 
                     $bulan = 10;
                     break;
                 case 'November':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 11)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 11)->orderBy('id', 'desc')->get(); 
                     $bulan = 11;
                     break;
                 case 'Desember':
-                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 12)->get();
+                    $dataHonor = ModelHonor::where('user_id', $id)->whereMonth('created_at', 12)->orderBy('id', 'desc')->get(); 
                     $bulan = 12;
                     break;
             }

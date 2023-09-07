@@ -47,6 +47,10 @@
                         }
                     }
                 },
+                {
+                    data: 'honor',
+                    name: 'honor',
+                },
 
                 {
                     data: 'action',
@@ -65,10 +69,16 @@
             table = $('#tableJenis').DataTable({
                 "ajax": "{{ route('honor.index') }}",
                 "columns": [{
-                        "data": "jenis"
+                        "data": "get_user.name"
                     },
                     {
-                        "data": "nama_servis"
+                        "data": "get_penjualan"
+                    },
+                    {
+                        "data": "get_servis"
+                    },
+                    {
+                        "data": "honor"
                     },
                     {
                         "data": "created_at"

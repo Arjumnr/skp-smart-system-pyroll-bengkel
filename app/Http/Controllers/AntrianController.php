@@ -37,6 +37,11 @@ class AntrianController extends Controller
 
                     // $antrian[$key]['harga'] = $dataServis->first()->getJenis->harga;
                     $antrian[$key]['jenis_servis'] = $dataServis->first()->getJenis->nama_servis;
+                    if ($dataServis->first()->getJenis->jenis == 'ringan') {
+                        $antrian[$key]['harga'] = intval($dataServis->first()->getJenis->harga) + 10000;
+                    } else {
+                        $antrian[$key]['harga'] = intval($dataServis->first()->getJenis->harga) + 20000;
+                    }
                 } else {
                     $antrian[$key]['mekanik'] = '-';
                     $antrian[$key]['harga'] = '-';
