@@ -36,6 +36,24 @@
                     name: 'get_jenis.nama_servis'
                 },
                 {
+                    data: 'get_jenis',
+                    name: 'get_jenis',
+                    render: function(data) {
+                        let harga = parseInt(data.harga);
+                        if (data.jenis == 'ringan') {
+                            harga = harga + 10000
+                            let stringHarga = harga.toString();
+                            return 'Rp. ' + stringHarga;
+                        } else if (data.jenis == 'berat') {
+                            harga = harga + 20000
+                            let stringHarga = harga.toString();
+                            return 'Rp. ' + stringHarga;
+                        }
+                    }
+
+
+                },
+                {
                     data: 'created_at',
                     name: 'created_at'
                 },

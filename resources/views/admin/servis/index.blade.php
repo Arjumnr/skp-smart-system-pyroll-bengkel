@@ -30,6 +30,7 @@
                                     <th>Mekanik</th>
                                     <th>Jenis Service</th>
                                     <th>Nama Service</th>
+                                    <th>Harga</th>
                                     <th>Tanggal Input</th>
                                     <th>Action</th>
                                 </tr>
